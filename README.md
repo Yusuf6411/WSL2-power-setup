@@ -103,6 +103,63 @@ You can backup or restore your Linux environment with:
 
 ---
 
+## 5. Running Linux GUI Applications (Optional)
+
+You can run Linux graphical applications on Windows using one of the following methods:
+
+### Windows 11 (WSLg)
+
+* Windows 11 includes **WSLg**, allowing Linux GUI apps to run natively.
+* Update WSL:
+
+```powershell
+wsl --update
+wsl --shutdown
+```
+
+* Launch your Linux distro and install GUI apps:
+
+```bash
+sudo apt update
+sudo apt install gedit gnome-terminal
+```
+
+* Run the app:
+
+```bash
+gedit
+```
+
+The GUI will appear on Windows directly.
+
+### Windows 10 (X Server)
+
+* Download and install [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
+* Launch VcXsrv (default settings, enable “Disable access control”).
+* In WSL, set display:
+
+```bash
+export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
+```
+
+* Run GUI apps, e.g., `gedit`.
+* Add the `export DISPLAY` line to `~/.bashrc` for permanent use.
+
+### Full Desktop Environment (XFCE)
+
+* Install XFCE and XRDP:
+
+```bash
+sudo apt install xfce4 xfce4-goodies xrdp
+sudo service xrdp start
+```
+
+* Connect with **Remote Desktop Connection** on Windows to `localhost:3389`.
+
+> GUI support is optional and recommended for users who want graphical Linux apps on Windows.
+
+---
+
 ## Notes & Tips
 
 * Always **run PowerShell as Administrator** for Windows setup scripts.

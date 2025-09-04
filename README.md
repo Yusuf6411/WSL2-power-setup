@@ -1,44 +1,106 @@
-# WSL2 Power Setup ⚡
+# WSL2 Power Setup
 
-Automate your **WSL2 + Linux setup on Windows** in minutes.  
-Get a ready-to-go Ubuntu/Debian environment with essential tools installed—no manual fuss!
+A collection of scripts to automate the installation and setup of **WSL2** (Windows Subsystem for Linux 2) and a Linux environment on Windows 10/11. This project simplifies configuring Ubuntu, installing essential packages, and setting up a ready-to-use development environment.
 
-## Features
-- ✅ Installs WSL2 and Ubuntu/Debian automatically
-- ✅ Sets up popular dev tools: git, python, docker, neovim
-- ✅ Optional GUI apps in WSL2
-- ✅ Backup and restore your WSL distros easily
-- ✅ Works on Windows 10 & 11
+---
 
-## Quick Start
+## Prerequisites
 
-1. Open PowerShell as Administrator
-2. Run:
-\`\`\`powershell
+* Windows 10 (Build 2004 or higher) or Windows 11
+* PowerShell with **Administrator privileges**
+* Internet connection
+* Git installed (for cloning the repository)
+
+---
+
+## Installation Steps for First-Time Users
+
+### 1. Clone the Repository (Recommended)
+
+Open PowerShell **as Administrator** and run:
+
+```powershell
+# Clone the repository
+git clone https://github.com/Yusuf6411/WSL2-power-setup.git
+cd WSL2-power-setup
+
+# Allow scripts to run
 Set-ExecutionPolicy Bypass -Scope Process -Force
+
+# Run the installer script
 .\scripts\install-wsl2.ps1
-\`\`\`
-3. Launch your WSL distro and run:
-\`\`\`bash
-bash scripts/setup-linux.sh
-\`\`\`
+```
 
-## Backup & Restore
-\`\`\`bash
-bash scripts/backup-restore.sh backup   # Backup WSL distros
-bash scripts/backup-restore.sh restore  # Restore WSL distros
-\`\`\`
+This ensures all scripts exist locally before executing them.
 
-## Optional GUI Apps
-\`\`\`bash
-bash scripts/gui-setup.sh
-\`\`\`
+---
 
-## Screenshots / Demo
-*(Include GIFs of install process and Linux desktop running inside Windows)*
+### 2. Download Scripts Directly (Alternative)
 
-## Contributing
-PRs welcome! 🚀  
+If you prefer not to clone the repo, download the installer script directly:
+
+```powershell
+# Download the installer script
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Yusuf6411/WSL2-power-setup/main/scripts/install-wsl2.ps1" -OutFile "install-wsl2.ps1"
+
+# Allow scripts to run
+Set-ExecutionPolicy Bypass -Scope Process -Force
+
+# Run the installer
+.\install-wsl2.ps1
+```
+
+---
+
+### 3. Setup Linux Environment
+
+After WSL2 installation, run the Linux setup script:
+
+```powershell
+.\scripts\setup-linux.sh
+```
+
+This will:
+
+* Update Ubuntu packages
+* Install essential packages (build tools, curl, git, etc.)
+* Configure user environment
+
+You may also run these commands manually inside WSL if needed:
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential curl git
+```
+
+---
+
+### 4. Backup & Restore Scripts
+
+You can backup or restore your Linux environment with:
+
+```bash
+# Backup
+.\scripts\backup-restore.sh backup
+
+# Restore
+.\scripts\backup-restore.sh restore
+```
+
+---
+
+## Notes & Tips
+
+* Always **run PowerShell as Administrator** for Windows setup scripts.
+* Restart your PC after WSL2 installation if prompted.
+* Check your WSL version with:
+
+```powershell
+wsl --list --verbose
+```
+
+---
 
 ## License
-MIT
+
+This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.

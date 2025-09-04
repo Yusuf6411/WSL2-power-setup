@@ -9,7 +9,21 @@ A collection of scripts to automate the installation and setup of **WSL2** (Wind
 * Windows 10 (Build 2004 or higher) or Windows 11
 * PowerShell with **Administrator privileges**
 * Internet connection
-* Git installed (for cloning the repository)
+* **Git installed** (see instructions below)
+
+### Installing Git
+
+If Git is not installed, follow these steps:
+
+1. Download Git for Windows from [https://git-scm.com/download/win](https://git-scm.com/download/win).
+2. Run the installer and follow the default options.
+3. After installation, verify Git is working by opening PowerShell and running:
+
+```powershell
+git --version
+```
+
+It should display the installed Git version.
 
 ---
 
